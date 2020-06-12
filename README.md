@@ -43,13 +43,13 @@ cd EFK-Stack
 3.) To get logs:
 	3.a.) If you want to get logs of an application running in a docker container.
 		* Add below give code to the docker container of the application.
-		```bash
-		    logging:
-		      driver: "fluentd"
-		      options:
-		        fluentd-address: localhost:24224
-		        tag: "custom-tag" #elastic index and kibana index pattern will be of same name
-		```
+```bash
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: "custom-tag" #elastic index and kibana index pattern will be of same name
+```
 		OR
 	    * In the .env file update your docker image name (without tag) and the published and target ports of the application.
 
