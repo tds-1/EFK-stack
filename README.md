@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # EFK stack
 
 A sample environment running an [EFK stack][efk] on your local machine.
@@ -89,3 +90,7 @@ curl -X POST -d 'json={"action":"login","userId":"5b07fbbb4e6b8"}' http://localh
 [docker]: https://www.docker.com/
 [docker-compose]: https://docs.docker.com/compose/
 [rested]: https://itunes.apple.com/au/app/rested-simple-http-requests/id421879749?mt=12
+=======
+# EFK-Stack
+
+>>>>>>> a1cd17c90d46726eb4c218def19f1f0798ddf16e

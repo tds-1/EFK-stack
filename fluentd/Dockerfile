@@ -1,4 +1,5 @@
 FROM fluent/fluentd:stable
+RUN useradd -ms /bin/bash  vault
 RUN apk add --update --virtual .build-deps \
     sudo build-base ruby-dev \
     && sudo gem install \
