@@ -30,30 +30,43 @@ On your machine, make sure you have installed:
 - [Docker][docker]
 - [Docker Compose][docker-compose]
 
-### Run
+### Steps:
 
+1.)
+```bash
+git clone https://gitlab.com/tanmay.deep/efk-stack.git
+```
+2.)
+```bash
+cd EFK-Stack
+```
+3.) To get logs:
+	3.a.) If you want to get logs of an application running in a docker container.
+		* Add below give code to the docker container of the application.
+		```bash
+		    logging:
+		      driver: "fluentd"
+		      options:
+		        fluentd-address: localhost:24224
+		        tag: "custom-tag" #elastic index and kibana index pattern will be of same name
+		```
+		OR
+	    * In the .env file update your docker image name (without tag) and the published and target ports of the application.
+
+	3.b.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
+		Eg. - PATH=/var/log if logs are in /var/log/<folder>
+
+
+
+4.)
 ```bash
 docker-compose up
 ```
 
 
-## Reference
-
-- [Quora - What is the ELK stack](https://www.quora.com/What-is-the-ELK-stack)
-- [Fluentd vs. LogStash: A Feature Comparison](https://www.loomsystems.com/blog/single-post/2017/01/30/a-comparison-of-fluentd-vs-logstash-log-collector)
-- [Panda Strike: Fluentd vs Logstash](https://www.pandastrike.com/posts/20150807-fluentd-vs-logstash)
-- [Log Aggregation with Fluentd, Elasticsearch and Kibana - Haufe-Lexware.github.io](http://work.haufegroup.io/log-aggregation/)
-- [Fluentd vs Logstash, An unbiased comparison](https://techstricks.com/fluentd-vs-logstash/)
-- [Fluentd vs. Logstash: A Comparison of Log Collectors | Logz.io](https://logz.io/blog/fluentd-logstash/)
-
 [elasticsearch]: https://www.elastic.co/products/elasticsearch
 [fluentd]: https://www.fluentd.org/
 [kibana]: https://www.elastic.co/products/kibana
-[logstash]: https://www.elastic.co/products/logstash
-[elk]: https://www.elastic.co/videos/introduction-to-the-elk-stack
-[docker-fluentd]: https://docs.docker.com/reference/logging/fluentd/
-[gcp-fluentd]: https://github.com/GoogleCloudPlatform/google-fluentd
 [efk]: https://docs.openshift.com/enterprise/3.1/install_config/aggregate_logging.html#overview
 [docker]: https://www.docker.com/
 [docker-compose]: https://docs.docker.com/compose/
-[rested]: https://itunes.apple.com/au/app/rested-simple-http-requests/id421879749?mt=12

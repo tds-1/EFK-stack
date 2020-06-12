@@ -3,7 +3,7 @@ services:
   web:
     image: ${DOCKER_IMAGE}
     ports:
-      - "${PORT}:${PORT}"
+      - "${PUBLISHED_PORT}:${TARGET_PORT}"
     links:
       - fluentd
     logging:
@@ -28,7 +28,7 @@ services:
     build: ./fluentd
     volumes:
       - ./fluentd/conf:/fluentd/etc
-      - /var/log:/var/log
+      - ${PATH}:/var/log
     links:
       - "elasticsearch"
     ports:
