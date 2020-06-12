@@ -49,7 +49,9 @@ cd EFK-Stack
 ```
 
 3.b.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
+
 Eg. Logs are stored at /var/log/test/*.log so the path will be PATH=/var/log.
+
 
 4.) To build the EFK stack containers
 ```bash
