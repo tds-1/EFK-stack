@@ -43,7 +43,7 @@ cd EFK-Stack
 
 3.) To get logs:
 
-	3.a.) If you want to get logs of an application running in a docker container.
+3.a.) If you want to get logs of an application running in a docker container.
 
 * Add below give code to the docker container of the application.
 ```bash
@@ -56,8 +56,9 @@ cd EFK-Stack
 
 * In the .env file update your docker image name (without tag) and the published and target ports of the application.
 
-	3.b.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
-		Eg. - PATH=/var/log if logs are in /var/log/<folder>
+3.b.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
+
+Eg. - PATH=/var/log if logs are in /var/log/"folder"
 
 
 
