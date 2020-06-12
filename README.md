@@ -12,7 +12,6 @@ As software systems grow and become more and more decoupled, log aggregation is 
 The issues to tackle down with logging are:
 
 - Having a centralized overview of all log events
-- Normalizing different log types
 - Automated processing of log messages
 - Supporting several and very different event sources
 
@@ -50,8 +49,9 @@ cd EFK-Stack
 
 3.b.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
 
-Eg. Logs are stored at /var/log/test/*.log so the path will be PATH=/var/log.
+Eg. Logs are stored at /var/log/test/*.log so the path will be PATH_FILE=/var/log.
 
+NOTE- Elasticsearch index and kibana index pattern will be same as the folder name of the log. Eg. Here it would be test.
 
 4.) To build the EFK stack containers
 ```bash
@@ -62,7 +62,7 @@ docker-compose build
 ```bash
 docker-compose up -d
 ```
-6.) To make all the indices made in elasticsearch, index pattern run the script in test.sh .
+6.) To make all the indices made in elasticsearch index patterns in kibana run the script in test.sh .
 
 ### Visualise the logs:
 - Check for logs in Kibana at localhost:5601
