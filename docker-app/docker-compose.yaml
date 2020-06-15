@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  web:
+    image: ${DOCKER_IMAGE}
+    ports:
+      - "${PUBLISHED_PORT}:${TARGET_PORT}"
+    logging:
+      driver: "fluentd"
+      options:
+        fluentd-address: localhost:24224
+        tag: ${LOG_TAG}
+
+

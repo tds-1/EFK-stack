@@ -33,12 +33,18 @@ git clone https://gitlab.com/tanmay.deep/efk-stack.git
 ```
 2.) Move to the EFK-Stack directory
 ```bash
-cd EFK-Stack
+cd efk-stack
 ```
 
 3.a.) If you want to get logs of an application running in a docker container.
 
-* Add below given code to the docker-compose of the application.
+Run the following commands to build and run EFK stack.
+```bash
+docker-compose build
+docker-compose up -d
+```
+
+* Add below given code to the docker-compose.yml file of the application.
 ```bash
     logging:
       driver: "fluentd"
@@ -46,23 +52,31 @@ cd EFK-Stack
         fluentd-address: localhost:24224
         tag: "custom-tag" #elastic index and kibana index pattern will be of same name
 ```
+build and run the docker-compose file of your application
 
-3.b.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
+3.b.) If you want to get logs of a docker image running at some XXXX port, specify docker_image, published_port and target_port in the .env file (in docker-app folder) and run the command. 
+
+```bash
+docker-compose build
+docker-compose up -d
+cd docker-app
+docker-compose build
+docker-compose up -d
+cd ..
+```
+
+3.c.) If you want to get logs from a folder, specify the path of the parent directory of that folder in the .env file.
 
 Eg. Logs are stored at /var/log/test/*.log so the path will be PATH_FILE=/var/log.
 
 NOTE- Elasticsearch index and kibana index pattern will be same as the folder name of the log. Eg. Here it would be test.
 
-4.) To build the EFK stack containers
+Now, run the following commands
 ```bash
 docker-compose build
-```
-
-5.) To run the EFK stack containers in the background.
-```bash
 docker-compose up -d
 ```
-6.) To make all the indices made in elasticsearch index patterns in kibana run the script in test.sh .
+4.) To make all the indices made in elasticsearch index patterns in kibana run the script in test.sh .
 
 ### Visualise the logs:
 - Check for logs in Kibana at localhost:5601
